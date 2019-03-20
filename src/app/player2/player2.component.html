@@ -1,0 +1,13 @@
+<div id="game">
+  <div id="gameboard">
+    <div *ngFor="let tile of gs.tiles"
+    [ngStyle]="{'background-image':selectedTile === tile && tile.value === X?
+    'url(X.png)' : 'url(background.jpg)' }"
+    (click)="onClick(tile)" class="Square"> 
+    <!-- [class.selected]="tile === selectedTile"  -->
+
+  
+  
+    </div>
+</div>	
+</div>
