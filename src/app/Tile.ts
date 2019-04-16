@@ -1,16 +1,21 @@
 export class Tile{
 
     hasValue:boolean = true;
-    value : string;
+    id : number;
     imgSrc : string;
+    clicked : boolean = false;
+    xtile : boolean;
+    ytile : boolean;
+    hideTile : boolean;
 
     setValue( value ){
-       this.value = value;
+       this.id = value;
     }
      
     setimgSrc(imgSrc){
        this.imgSrc = imgSrc;
     }
+
  
    }
  

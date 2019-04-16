@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Tile } from './Tile';
 import { Player } from './Player';
+import { Gameboard } from './Gameboard';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 // import { catchError, map, tap } from 'rxjs/operators';
@@ -19,20 +20,9 @@ export class GameService {
   tiles = []
   newUrl = "";
   gameKey = "Game Session Id";
+  tile : any;
+  
 
-
-  // 
-  createGameBoard(){
-    this.tiles = [];
-      for (var i = 0; i < 9; i++) {
-        var tile = new Tile();
-        tile.hasValue = false;
-        tile.value = "";
-        this.tiles.push(tile);
-        console.log("Test");
-      }
-      return this.tiles;
-  }
 createGame() {
   return this.http.get(this.baseUrl + '/createGame?key=' + this.gameKey, {responseType: 'text'})
   .pipe(
@@ -51,8 +41,23 @@ reset() {
   
 }
 
-getPlayer(id): Observable<Player> {
-  return this.http.get<Player>(this.baseUrl + '/createGame?key=' + id)
+move(id , tile){
+  let i = id;
+  let possibleCoordinates = "0,0;0,1;0,2;1,0;1,1;1,2;2,0;2,1;2,2";
+  let coordinates = possibleCoordinates.split(";");
+  let coordinatesXY = coordinates[i].split(",");
+  let  x = parseInt(coordinatesXY[1]);
+  let y = parseInt(coordinatesXY[0]);
+  return this.http.get(this.baseUrl + '/move?key=' + this.gameKey +  "&tile=" + tile + "&y=" + y + "&x=" + x, {responseType: 'text'})
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+  )
+}
+
+
+checkBoard(){
+  return this.http.get(this.baseUrl + '/board?key=' + this.gameKey, {responseType: 'text'})
   .pipe(
     retry(1),
     catchError(this.handleError)

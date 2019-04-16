@@ -1,13 +1,14 @@
+<!-- <div class= "gameHasStarted"></div> -->
 <div id="game">
-  <div id="gameboard">
-    <div *ngFor="let tile of gs.tiles"
-    [ngStyle]="{'background-image':selectedTile === tile && tile.value === X?
-    'url(X.png)' : 'url(background.jpg)' }"
+  <div  [ngStyle]='boardStyle'  >
+    <div *ngFor="let tile of tiles , let i of tiles" 
+    [class.xTile]="tile.xtile === true"
+    [class.yTile]= "tile.ytile === true"
+    [class.square] = "tile.hideTile === true"
     (click)="onClick(tile)" class="Square"> 
-    <!-- [class.selected]="tile === selectedTile"  -->
-
-  
-  
-    </div>
+  </div>
 </div>	
 </div>
+	<button (click)="playGame($event)" id = "Play">Click Me</button>
+	<button (click)="reset($event)" id = "reset">Reset Game</button>
+  <!-- id="gameboard" -->

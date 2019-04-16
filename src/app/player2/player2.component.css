@@ -15,18 +15,9 @@ html, body {
    overflow: hidden;
 }
 
-#gameboard {
-	width: 50%;
-    height:70vh;
-	margin-top:5%;
-	background-image:url("src/images/board.jpg " );
-	background-size: 100% 100%;
-    background-repeat: no-repeat;
-    border:10px solid #303030 ;
-    margin-left: 23%;
-}
 
 .Square{
+	/* display: none; */
 	float: left;
     width: 33.333%;
     height: 33.333%;
@@ -40,14 +31,49 @@ width: 100%;
 }
 
 .selected{
-	background-image:url("src/images/X.png " );
-	background-size: 100% 100%;
+	/* background-image:url("src/images/X.png " ); */
+	/* background-size: 100% 100%; */
 }
 
 #Play{
 	height: 20px;
 	width:  100px;
 }
+.xTile{
+	background-image:url("src/images/X.png " );
+	background-size: 100% 100%;
+}
+.yTile{
+	background-image:url("src/images/O.png " );
+	background-size: 100% 100%;
+}
+.square{
+	display: none;
+}
 
-
+#reset{
+	margin-left: 300px;
+	height: 20px;
+	width:  100px;
+}
+#play{
+	margin-left:37vw;
+	width:50%;
+	height:8vh;
+	content:url("src/images/play.png");
+	margin-top: -5vh;
+	margin-left: 25vw;
+	background-color: azure;
+	
+	}
+	#gameboard {
+		width: 50%;
+		height:70vh;
+		margin-top:5%;
+		background-image:url("src/images/board.jpg " );
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		border:10px solid #303030 ;
+		margin-left: 23%;
+	}
 
